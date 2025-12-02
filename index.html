@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Minds – SEO Toolkit: Free SEO Tools, Meta Tag Generator, and Content Optimization</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Prompt Minds offers the best free SEO tools for bloggers and marketers. Use our meta tag generator, keyword analyzer, and content optimization blogging tools to boost your ranking.">
+    <meta name="keywords" content="free SEO tools, meta tag generator, blogging tools, keyword analyzer, content optimization, slug generator, robots.txt generator, read time estimator">
+
+    <!-- Google Font: Poppins for modern, clear look -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* --- 🎨 Theme Variables --- */
+        :root {
+            /* DARK MODE (Default) */
+            --bg-main: #0d0f14;
+            --bg-card: #1c222d;
+            --bg-input: #12151a;
+            --text-primary: #ffffff;
+            --text-secondary: #e0e0e0;
+            --color-accent: #007bff; /* Blue */
+            --color-cta: #00aaff; /* Lighter Blue for CTA */
+            --glow-shadow: rgba(0, 123, 255, 0.5);
+            --glow-shadow-hard: rgba(0, 170, 255, 0.8);
+            --border-color: rgba(0, 123, 255, 0.3);
+            --hover-bg: rgba(0, 123, 255, 0.1);
+            --input-border: 1px solid var(--border-color);
+        }
+
+        /* LIGHT MODE */
+        .light-theme {
+            --bg-main: #ffffff;
+            --bg-card: #f2f2f2;
+            --bg-input: #e9e9e9;
+            --text-primary: #000000;
+            --text-secondary: #333333;
+            --color-accent: #007bff;
+            --color-cta: #007bff;
+            --glow-shadow: rgba(0, 123, 255, 0.2);
+            --glow-shadow-hard: rgba(0, 123, 255, 0.4);
+            --border-color: rgba(0, 123, 255, 0.5);
+            --hover-bg: rgba(0, 123, 255, 0.05);
+            --input-border: 1px solid var(--border-color);
+        }
+
+        /* Global Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        a {
+            color: var(--color-accent);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        /* --- Input/Output Elements --- */
+        input:not([type="checkbox"]):not([type="radio"]):not([type="range"]), textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            background-color: var(--bg-input);
+            color: var(--text-primary);
+            border: var(--input-border);
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            box-shadow: 0 0 5px var(--color-accent);
+            border-color: var(--color-accent);
+        }
+
+        .output-box {
+            background-color: var(--bg-input);
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 6px;
+            border: var(--input-border);
+            min-height: 40px;
+            color: var(--text-secondary);
+            font-family: monospace;
+            overflow-x: auto;
+        }
+        
+        .result-text {
+            color: var(--color-accent);
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        /* General Button Style */
+        .btn, .copy-btn {
+            padding: 8px 15px;
+            border: 2px solid var(--color-accent);
+            background-color: transparent;
+            color: var(--color-accent);
+            cursor: pointer;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-right: 10px;
+        }
+        
+        .btn:hover, .copy-btn:hover {
+            background-color: var(--color-accent);
+            color: var(--bg-main);
+            box-shadow: 0 0 10px var(--glow-shadow);
+        }
+
+        /* --- 🧢 HEADER --- */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: var(--bg-card);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--color-accent);
+            text-shadow: 0 0 8px var(--glow-shadow);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .nav-link {
+            font-weight: 600;
+            position: relative;
+            padding: 5px 0;
+            color: var(--text-primary);
+        }
+        
+        .nav-link:hover {
+            color: var(--color-accent);
+        }
+
+        /* Neon Underline Effect */
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background-color: var(--color-accent);
+            box-shadow: 0 0 10px var(--glow-shadow-hard);
+            transition: width 0.4s ease-out, left 0.4s ease-out;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* Theme Toggle Button */
+        #theme-toggle {
+            font-size: 1.2rem;
+            background: none;
+            border: none;
+            color: var(--color-accent);
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: background 0.3s, transform 0.3s;
+            text-shadow: 0 0 5px var(--glow-shadow);
+        }
+
+        #theme-toggle:hover {
+            background-color: var(--hover-bg);
+            transform: scale(1.1);
+        }
+        
+        /* Hamburger Menu (Mobile) */
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-accent);
+        }
+
+        /* --- 🎯 HERO SECTION --- */
+        .hero {
+            padding: 80px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at center, rgba(0, 123, 255, 0.05), rgba(0, 123, 255, 0) 70%);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero-icon {
+            font-size: 4rem;
+            color: var(--color-cta);
+            margin-bottom: 20px;
+            animation: pulse 4s infinite;
+            text-shadow: 0 0 15px var(--glow-shadow-hard);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            color: var(--color-cta);
+            text-shadow: 0 0 10px var(--glow-shadow-hard);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-bottom: 30px;
+            color: var(--text-secondary);
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 15px 35px;
+            background: var(--color-cta);
+            color: var(--bg-main);
+            border: 2px solid var(--color-cta);
+            border-radius: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            box-shadow: 0 0 15px var(--glow-shadow-hard);
+            transition: all 0.4s;
+        }
+
+        .hero-cta:hover {
+            background: var(--bg-main);
+            color: var(--color-cta);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 0 25px var(--glow-shadow-hard);
+        }
+
+        /* --- 🧰 TOOLS SECTION --- */
+        .tools-section {
+            padding: 50px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .tools-heading {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--color-accent);
+            text-shadow: 0 0 5px var(--glow-shadow);
+        }
+
+        .tools-grid {
+            display: grid;
+            gap: 30px;
+            grid-template-columns: repeat(3, 1fr); /* Desktop: 3 columns */
+        }
+
+        .tool-card {
+            background-color: var(--bg-card);
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.5s;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px var(--glow-shadow-hard);
+            background-color: var(--hover-bg);
+        }
+
+        .tool-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--color-accent);
+            text-shadow: 0 0 3px var(--glow-shadow);
+            display: flex;
+            align-items: center;
+        }
+        
+        .tool-title i {
+            margin-right: 10px;
+        }
+
+        .tool-description {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .tool-info-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 10px;
+            color: var(--text-secondary);
+        }
+        
+        /* Specific Tool Styling */
+        #word-char-output div, #density-output div, #read-time-output div {
+            padding: 5px 0;
+            color: var(--text-primary);
+        }
+        
+        #word-char-output span, #density-output span {
+            color: var(--color-accent);
+            font-weight: 700;
+        }
+        
+        #alt-text-input {
+            margin-bottom: 5px;
+        }
+        
+        .toggle-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .toggle-group label {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        
+        .toggle-group input[type="checkbox"] {
+            margin-right: 5px;
+            accent-color: var(--color-accent);
+        }
+        
+        /* --- FOOTER --- */
+        .footer {
+            margin-top: auto;
+            background-color: var(--bg-card);
+            padding: 20px;
+            text-align: center;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-color);
+        }
+
+
+        /* --- 📱 RESPONSIVENESS --- */
+        
+        /* Tablet/Small Desktop (992px max) */
+        @media (max-width: 992px) {
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr); /* Tablet: 2 columns */
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .tools-section {
+                padding: 30px 15px;
+            }
+        }
+
+        /* Mobile (600px max) */
+        @media (max-width: 600px) {
+            .header {
+                padding: 10px 15px;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-card);
+                padding: 10px 0;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                border-top: 1px solid var(--border-color);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-link {
+                padding: 10px 20px;
+                width: 100%;
+                text-align: left;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .hero {
+                padding: 40px 15px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-icon {
+                font-size: 3rem;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr; /* Mobile: 1 column */
+            }
+        }
+    </style>
+</head>
+<body class="dark-theme">
+
+    <!-- 🧢 HEADER (Sticky, Glowing) -->
+    <header class="header">
+        <div class="logo">
+            <i class="fas fa-brain"></i>
+            Prompt Minds – SEO Toolkit
+        </div>
+        
+        <nav class="nav-links" id="nav-links">
+            <a href="#" class="nav-link">Home</a>
+            <a href="#tools" class="nav-link">Tools</a>
+            <a href="#" class="nav-link">About</a>
+            <a href="#" class="nav-link">Contact</a>
+        </nav>
+        
+        <div>
+            <button id="theme-toggle" aria-label="Toggle Theme">
+                <i class="fas fa-sun"></i>
+            </button>
+            <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- 🎯 HERO SECTION (Centered + SEO Optimized) -->
+        <section class="hero">
+            <i class="fas fa-chart-line hero-icon"></i>
+            <h1>Best Free SEO Tools for Bloggers & Marketers</h1>
+            <p>Optimize your blog posts, generate meta tags, and analyze keywords — all with Prompt Minds’ AI-powered free SEO tools suite. Start your content optimization journey today!</p>
+            <a href="#tools" class="hero-cta">Start Exploring &rarr;</a>
+        </section>
+
+        <!-- 🧰 TOOLS SECTION -->
+        <section class="tools-section" id="tools">
+            <h2 class="tools-heading">23 Essential SEO & Blogging Tools</h2>
+            
+            <div class="tools-grid">
+                
+                <!-- 1. Meta Tag Generator -->
+                <div class="tool-card" id="tool-meta-generator">
+                    <h3 class="tool-title"><i class="fas fa-code"></i> Meta Tag Generator</h3>
+                    <label class="tool-info-label" for="meta-title">Page Title (Max 60 chars):</label>
+                    <input type="text" id="meta-title" maxlength="60" placeholder="e.g., Best Free SEO Tools 2025" oninput="generateMetaTags()">
+                    
+                    <label class="tool-info-label" for="meta-desc">Description (Max 160 chars):</label>
+                    <textarea id="meta-desc" maxlength="160" placeholder="A brief, engaging description..." rows="3" oninput="generateMetaTags()"></textarea>
+                    
+                    <label class="tool-info-label" for="meta-keywords">Keywords (Comma-separated):</label>
+                    <input type="text" id="meta-keywords" placeholder="e.g., seo tools, keyword analyzer" oninput="generateMetaTags()">
+                    
+                    <div class="tool-info-label">Generated Tags (Copy & Paste):</div>
+                    <textarea id="meta-output" class="output-box" rows="5" readonly></textarea>
+                    <button class="copy-btn" onclick="copyToClipboard('meta-output')"><i class="fas fa-copy"></i> Copy</button>
+                    <p class="tool-description">Use our free meta tag generator to create perfect title and description tags for better SERP visibility. Proper meta tags are crucial for great content optimization and attracting clicks.</p>
+                </div>
+                
+                <!-- 2. Keyword Density Checker -->
+                <div class="tool-card" id="tool-density-checker">
+                    <h3 class="tool-title"><i class="fas fa-search-dollar"></i> Keyword Density Checker</h3>
+                    <label class="tool-info-label" for="density-text">Paste Content:</label>
+                    <textarea id="density-text" placeholder="Paste your blog content here..." rows="5" oninput="checkKeywordDensity()"></textarea>
+                    
+                    <label class="tool-info-label" for="target-keyword">Target Keyword (Optional):</label>
+                    <input type="text" id="target-keyword" placeholder="e.g., free SEO tools" oninput="checkKeywordDensity()">
+                    
+                    <div class="tool-info-label">Analysis:</div>
+                    <div id="density-output" class="output-box">Type or paste content to begin analysis.</div>
+                    <p class="tool-description">Ensure optimal content optimization with our keyword analyzer. This free SEO tool calculates the density of your target keyword and lists top terms to prevent keyword stuffing.</p>
+                </div>
+                
+                <!-- 3. Robots.txt Generator -->
+                <div class="tool-card" id="tool-robots-generator">
+                    <h3 class="tool-title"><i class="fas fa-robot"></i> Robots.txt Generator</h3>
+                    <label class="tool-info-label" for="user-agent">User Agent:</label>
+                    <select id="user-agent" onchange="generateRobotsTxt()">
+                        <option value="*">All Robots (*)</option>
+                        <option value="Googlebot">Googlebot</option>
+                        <option value="Bingbot">Bingbot</option>
+                    </select>
+                    
+                    <div class="toggle-group">
+                        <label><input type="checkbox" id="allow-all" checked onchange="generateRobotsTxt()"> Allow All</label>
+                        <label><input type="checkbox" id="sitemap-include" onchange="generateRobotsTxt()"> Include Sitemap URL</label>
+                    </div>
+                    
+                    <label class="tool-info-label" for="disallow-path">Disallow Path (e.g., /admin/):</label>
+                    <input type="text" id="disallow-path" placeholder="/private/, /temp/" oninput="generateRobotsTxt()">
+                    
+                    <div class="tool-info-label">Generated Robots.txt:</div>
+                    <textarea id="robots-output" class="output-box" rows="5" readonly></textarea>
+                    <p class="tool-description">Control search engine bots with our Robots.txt generator. Essential for site health, this free tool helps you specify which areas of your website should be excluded from crawling.</p>
+                </div>
+                
+                <!-- 4. Sitemap Generator (Simulated) -->
+                <div class="tool-card" id="tool-sitemap-generator">
+                    <h3 class="tool-title"><i class="fas fa-sitemap"></i> Sitemap Generator (Simulated)</h3>
+                    <label class="tool-info-label" for="base-url">Base URL:</label>
+                    <input type="url" id="base-url" placeholder="https://www.promptminds.com" value="https://www.promptminds.com">
+                    
+                    <label class="tool-info-label" for="page-count">Approximate Page Count:</label>
+                    <input type="number" id="page-count" value="50" min="1">
+                    
+                    <button class="btn" onclick="generateSitemap()">Generate Sitemap XML</button>
+                    
+                    <div class="tool-info-label">Generated XML:</div>
+                    <textarea id="sitemap-output" class="output-box" rows="5" readonly></textarea>
+                    <p class="tool-description">A sitemap is crucial for helping search engines discover all your pages. This generator provides a structured XML template, vital for indexing your content optimization efforts.</p>
+                </div>
+                
+                <!-- 5. Title & Description Analyzer -->
+                <div class="tool-card" id="tool-title-analyzer">
+                    <h3 class="tool-title"><i class="fas fa-chart-bar"></i> Title & Description Analyzer</h3>
+                    <label class="tool-info-label" for="analyze-title">SEO Title:</label>
+                    <input type="text" id="analyze-title" maxlength="70" placeholder="Paste your title here..." oninput="analyzeTitleDesc()">
+                    
+                    <label class="tool-info-label" for="analyze-desc">Meta Description:</label>
+                    <textarea id="analyze-desc" maxlength="320" placeholder="Paste your description here..." rows="3" oninput="analyzeTitleDesc()"></textarea>
+                    
+                    <div class="tool-info-label">Analysis Results:</div>
+                    <div id="analyze-output" class="output-box">Title: <span>0/60 chars (Too Short)</span><br>Description: <span>0/160 chars (Too Short)</span></div>
+                    <p class="tool-description">Optimize your Title & Description lengths. Our free SEO tool checks character count against best practices to ensure your content displays perfectly in search results, maximizing click-through rates.</p>
+                </div>
+                
+                <!-- 6. URL Encoder/Decoder -->
+                <div class="tool-card" id="tool-url-encoder">
+                    <h3 class="tool-title"><i class="fas fa-link"></i> URL Encoder/Decoder</h3>
+                    <label class="tool-info-label" for="url-input">Input URL/Text:</label>
+                    <textarea id="url-input" placeholder="e.g., My URL with Spaces & ?" rows="3" oninput="encodeDecodeUrl()"></textarea>
+                    
+                    <div class="tool-info-label">Encoded:</div>
+                    <textarea id="url-encoded-output" class="output-box" rows="2" readonly></textarea>
+                    
+                    <div class="tool-info-label">Decoded:</div>
+                    <textarea id="url-decoded-output" class="output-box" rows="2" readonly></textarea>
+                    <p class="tool-description">Encode special characters in URLs to prevent errors. This utility tool is essential for handling query strings and ensuring clean, functional links across your website.</p>
+                </div>
+                
+                <!-- 7. Canonical Tag Generator -->
+                <div class="tool-card" id="tool-canonical-generator">
+                    <h3 class="tool-title"><i class="fas fa-tags"></i> Canonical Tag Generator</h3>
+                    <label class="tool-info-label" for="canonical-url">Canonical URL:</label>
+                    <input type="url" id="canonical-url" placeholder="https://example.com/main-page">
+                    
+                    <button class="btn" onclick="generateCanonicalTag()">Generate Tag</button>
+                    
+                    <div class="tool-info-label">Generated Canonical Tag:</div>
+                    <textarea id="canonical-output" class="output-box" rows="3" readonly></textarea>
+                    <p class="tool-description">Prevent duplicate content issues with a canonical tag. Simply specify the preferred URL for indexing to consolidate link equity, a key aspect of technical SEO.</p>
+                </div>
+                
+                <!-- 8. Slug Generator -->
+                <div class="tool-card" id="tool-slug-generator">
+                    <h3 class="tool-title"><i class="fas fa-pen-nib"></i> Slug Generator</h3>
+                    <label class="tool-info-label" for="slug-input">Post Title:</label>
+                    <input type="text" id="slug-input" placeholder="My Awesome Guide to Free SEO Tools" oninput="generateSlug()">
+                    
+                    <div class="tool-info-label">Generated Slug:</div>
+                    <div id="slug-output" class="output-box result-text"></div>
+                    <p class="tool-description">Create clean, SEO-friendly slugs (URL paths) from your blog titles. Our slug generator ensures your links are readable, concise, and contain your target keywords for better ranking.</p>
+                </div>
+                
+                <!-- 9. Redirect URL Generator (Simple 301 Simulation) -->
+                <div class="tool-card" id="tool-redirect-generator">
+                    <h3 class="tool-title"><i class="fas fa-directions"></i> Redirect Code Generator (301)</h3>
+                    <label class="tool-info-label" for="old-url">Old/Source URL (Relative):</label>
+                    <input type="text" id="old-url" placeholder="/old-post.html" oninput="generateRedirect()">
+                    
+                    <label class="tool-info-label" for="new-url">New/Target URL (Relative):</label>
+                    <input type="text" id="new-url" placeholder="/new-post/" oninput="generateRedirect()">
+                    
+                    <div class="tool-info-label">Apache (.htaccess) Code:</div>
+                    <textarea id="redirect-output" class="output-box" rows="3" readonly></textarea>
+                    <p class="tool-description">Generate the necessary .htaccess code for permanent (301) redirects. Critical for preserving link equity when moving or deleting pages, maintaining your content optimization efforts.</p>
+                </div>
+                
+                <!-- 10. Alt Text Generator (Template) -->
+                <div class="tool-card" id="tool-alt-text-generator">
+                    <h3 class="tool-title"><i class="fas fa-image"></i> Alt Text Generator</h3>
+                    <label class="tool-info-label" for="alt-text-input">Image Filename/Topic:</label>
+                    <input type="text" id="alt-text-input" placeholder="man-typing-on-laptop.jpg">
+                    
+                    <button class="btn" onclick="generateAltText()">Generate Alt Text</button>
+                    
+                    <div class="tool-info-label">Generated Alt Text:</div>
+                    <div id="alt-output" class="output-box result-text"></div>
+                    <p class="tool-description">Improve accessibility and image SEO with descriptive alt text. This blogging tool creates a template based on your image's topic, ensuring clear communication to search engines.</p>
+                </div>
+                
+                <!-- 11. Blog Title Generator (Simple Idea) -->
+                <div class="tool-card" id="tool-title-idea-generator">
+                    <h3 class="tool-title"><i class="fas fa-lightbulb"></i> Blog Title Idea Generator</h3>
+                    <label class="tool-info-label" for="title-keyword">Main Keyword/Topic:</label>
+                    <input type="text" id="title-keyword" placeholder="SEO for Beginners">
+                    
+                    <button class="btn" onclick="generateBlogTitle()">Generate Idea</button>
+                    
+                    <div class="tool-info-label">Title Idea:</div>
+                    <div id="blog-title-output" class="output-box result-text"></div>
+                    <p class="tool-description">Stuck on headlines? Our blogging tool provides catchy, click-worthy blog title ideas based on your target keyword to improve your content's organic search performance.</p>
+                </div>
+                
+                <!-- 12. Blog Topic Idea Generator -->
+                <div class="tool-card" id="tool-topic-idea-generator">
+                    <h3 class="tool-title"><i class="fas fa-clipboard-list"></i> Blog Topic Idea Generator</h3>
+                    <label class="tool-info-label" for="topic-seed">Seed Topic:</label>
+                    <input type="text" id="topic-seed" placeholder="Link Building">
+                    
+                    <button class="btn" onclick="generateBlogTopic()">Generate 3 Topics</button>
+                    
+                    <div class="tool-info-label">Topic Ideas:</div>
+                    <div id="blog-topic-output" class="output-box result-text"></div>
+                    <p class="tool-description">Overcome writer's block with new blog topic ideas. Enter a seed keyword, and the tool will suggest high-potential content angles for your blogging strategy.</p>
+                </div>
+
+                <!-- 13. Read Time Estimator -->
+                <div class="tool-card" id="tool-read-time">
+                    <h3 class="tool-title"><i class="fas fa-clock"></i> Read Time Estimator</h3>
+                    <label class="tool-info-label" for="read-time-text">Paste Article Text:</label>
+                    <textarea id="read-time-text" placeholder="Paste content here..." rows="5" oninput="estimateReadTime()"></textarea>
+                    
+                    <div class="tool-info-label">Estimated Reading Time (200 WPM):</div>
+                    <div id="read-time-output" class="output-box">0 minutes</div>
+                    <p class="tool-description">Help users know how long your blog posts take to read. This essential blogging tool calculates the estimated reading time based on the average human reading speed of 200 words per minute.</p>
+                </div>
+                
+                <!-- 14. Word & Character Counter -->
+                <div class="tool-card" id="tool-word-counter">
+                    <h3 class="tool-title"><i class="fas fa-font"></i> Word & Character Counter</h3>
+                    <label class="tool-info-label" for="word-char-text">Paste Text:</label>
+                    <textarea id="word-char-text" placeholder="Start typing or paste text here..." rows="5" oninput="countWordsChars()"></textarea>
+                    
+                    <div class="tool-info-label">Counts:</div>
+                    <div id="word-char-output" class="output-box">
+                        <div>Words: <span>0</span></div>
+                        <div>Characters (including spaces): <span>0</span></div>
+                        <div>Characters (no spaces): <span>0</span></div>
+                    </div>
+                    <p class="tool-description">Crucial for content optimization and ensuring you hit word targets. Our word and character counter provides real-time metrics for blog posts, meta tags, and academic essays.</p>
+                </div>
+
+                <!-- 15. HTML Tag Cleaner -->
+                <div class="tool-card" id="tool-html-cleaner">
+                    <h3 class="tool-title"><i class="fas fa-broom"></i> HTML Tag Cleaner</h3>
+                    <label class="tool-info-label" for="html-input">Paste HTML with tags:</label>
+                    <textarea id="html-input" placeholder="<h1>Title</h1><p>Text</p>" rows="3" oninput="cleanHtmlTags()"></textarea>
+                    
+                    <div class="tool-info-label">Plain Text Output:</div>
+                    <textarea id="html-output" class="output-box" rows="3" readonly></textarea>
+                    <p class="tool-description">Quickly strip all HTML tags from content copied from a web page or rich text editor, leaving only clean, plain text for easy transfer and formatting.</p>
+                </div>
+                
+                <!-- 16. Markdown to HTML Viewer -->
+                <div class="tool-card" id="tool-markdown-viewer">
+                    <h3 class="tool-title"><i class="fab fa-markdown"></i> Markdown to HTML Viewer</h3>
+                    <label class="tool-info-label" for="md-input">Paste Markdown Text:</label>
+                    <textarea id="md-input" placeholder="# Heading\n**Bold Text**" rows="3" oninput="renderMarkdown()"></textarea>
+                    
+                    <div class="tool-info-label">HTML Preview:</div>
+                    <div id="md-output-preview" class="output-box"></div>
+                    <p class="tool-description">See how your Markdown converts to HTML instantly. This blogging tool is perfect for quick formatting checks before publishing to ensure proper display and content structure.</p>
+                </div>
+                
+                <!-- 17. Text Formatter -->
+                <div class="tool-card" id="tool-text-formatter">
+                    <h3 class="tool-title"><i class="fas fa-text-height"></i> Text Formatter</h3>
+                    <label class="tool-info-label" for="format-input">Text to Format:</label>
+                    <textarea id="format-input" placeholder="tHiS IS mIxed cASe" rows="3"></textarea>
+                    
+                    <button class="btn" onclick="formatText('upper')">Uppercase</button>
+                    <button class="btn" onclick="formatText('lower')">Lowercase</button>
+                    <button class="btn" onclick="formatText('title')">Title Case</button>
+                    
+                    <div class="tool-info-label">Formatted Output:</div>
+                    <textarea id="format-output" class="output-box" rows="2" readonly></textarea>
+                    <p class="tool-description">Instantly convert text to uppercase, lowercase, or proper title case. A simple but essential utility for cleaning up copy and maintaining consistent presentation.</p>
+                </div>
+                
+                <!-- 18. Lorem Ipsum Generator -->
+                <div class="tool-card" id="tool-lorem-generator">
+                    <h3 class="tool-title"><i class="fas fa-paragraph"></i> Lorem Ipsum Generator</h3>
+                    <label class="tool-info-label" for="lorem-count">Number of Paragraphs:</label>
+                    <input type="number" id="lorem-count" value="2" min="1" max="10">
+                    
+                    <button class="btn" onclick="generateLoremIpsum()">Generate Text</button>
+                    
+                    <div class="tool-info-label">Generated Text:</div>
+                    <textarea id="lorem-output" class="output-box" rows="5" readonly></textarea>
+                    <p class="tool-description">Generate placeholder text for design mockups, wireframes, or testing templates. Quickly fill content gaps with standard dummy text for layout visualization.</p>
+                </div>
+                
+                <!-- 19. JSON Formatter -->
+                <div class="tool-card" id="tool-json-formatter">
+                    <h3 class="tool-title"><i class="fas fa-file-code"></i> JSON Formatter / Validator</h3>
+                    <label class="tool-info-label" for="json-input">Paste JSON/Text:</label>
+                    <textarea id="json-input" placeholder='{"key":"value","number":123}' rows="4" oninput="formatJson()"></textarea>
+                    
+                    <div class="tool-info-label">Formatted/Error Output:</div>
+                    <textarea id="json-output" class="output-box" rows="5" readonly></textarea>
+                    <p class="tool-description">Validate and format messy JSON strings into readable, indented structures. A critical utility tool for developers and marketers dealing with APIs and data feeds.</p>
+                </div>
+                
+                <!-- 20. Color Picker (Input) -->
+                <div class="tool-card" id="tool-color-picker">
+                    <h3 class="tool-title"><i class="fas fa-palette"></i> Color Picker</h3>
+                    <label class="tool-info-label" for="color-input">Select a Color:</label>
+                    <input type="color" id="color-input" value="#007bff" oninput="updateColorOutput(this.value)">
+                    
+                    <div class="tool-info-label">Selected Color Value:</div>
+                    <div id="color-output" class="output-box">
+                        HEX: <span class="result-text">#007bff</span>
+                    </div>
+                    <div id="color-swatch" style="height: 50px; margin-top: 10px; border-radius: 6px; background-color: #007bff; border: var(--input-border);"></div>
+                    <p class="tool-description">Instantly grab HEX, RGB, and other color values directly from a color wheel. Essential for web design, content creation, and ensuring brand consistency.</p>
+                </div>
+                
+                <!-- 21. Text to Speech (Web Speech API) -->
+                <div class="tool-card" id="tool-tts">
+                    <h3 class="tool-title"><i class="fas fa-volume-up"></i> Text to Speech (TTS)</h3>
+                    <label class="tool-info-label" for="tts-text">Text to Read:</label>
+                    <textarea id="tts-text" placeholder="Hear your content read aloud to proofread." rows="3"></textarea>
+                    
+                    <button class="btn" onclick="readText()">Read Text</button>
+                    <button class="btn" onclick="stopReading()">Stop</button>
+                    
+                    <p class="tool-description">Use your browser's native Web Speech API to read your content aloud. A fantastic blogging tool for proofreading and catching flow or grammatical errors that you might miss while reading silently.</p>
+                </div>
+                
+                <!-- 22. Age Calculator -->
+                <div class="tool-card" id="tool-age-calculator">
+                    <h3 class="tool-title"><i class="fas fa-birthday-cake"></i> Age Calculator</h3>
+                    <label class="tool-info-label" for="birth-date">Your Birth Date:</label>
+                    <input type="date" id="birth-date" value="2000-01-01">
+                    
+                    <button class="btn" onclick="calculateAge()">Calculate Age</button>
+                    
+                    <div class="tool-info-label">Your Age:</div>
+                    <div id="age-output" class="output-box result-text"></div>
+                    <p class="tool-description">A quick utility tool to calculate age in years, months, and days from any given birth date. Accurate and useful for various data input scenarios.</p>
+                </div>
+                
+                <!-- 23. Timer / Stopwatch -->
+                <div class="tool-card" id="tool-timer-stopwatch">
+                    <h3 class="tool-title"><i class="fas fa-stopwatch"></i> Timer / Stopwatch</h3>
+                    <div id="stopwatch-display" style="font-size: 2rem; text-align: center; margin: 15px 0; color: var(--color-cta); text-shadow: 0 0 5px var(--glow-shadow);">00:00:00</div>
+                    
+                    <button class="btn" id="stopwatch-start">Start</button>
+                    <button class="btn" id="stopwatch-pause" disabled>Pause</button>
+                    <button class="btn" id="stopwatch-reset">Reset</button>
+                    
+                    <p class="tool-description">A simple, effective utility for tracking time spent on content writing, keyword analyzer research, or other focused tasks. Boost your productivity with accurate timing.</p>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- 4. Footer -->
+    <footer class="footer">
+        <p>SEO Keywords: <span style="font-style: italic;">free SEO tools, meta tag generator, blogging tools, keyword analyzer, content optimization.</span></p>
+        <p>&copy; 2025 Prompt Minds – SEO Toolkit. All Rights Reserved. Built with Vanilla JS.</p>
+    </footer>
+
+    <!-- --- ⚙️ FUNCTIONALITY (JavaScript) --- -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Global Utility and Setup ---
+            const $ = (selector) => document.querySelector(selector);
+            const $$ = (selector) => document.querySelectorAll(selector);
+
+            // Function to get CSS variable value
+            const getCssVar = (varName) => getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
+
+
+            // --- Theme Logic ---
+            const themeToggle = $('#theme-toggle');
+            const body = $('body');
+            const localStorageKey = 'seo-toolkit-theme';
+
+            const applyTheme = (theme) => {
+                body.className = theme;
+                const icon = theme === 'dark-theme' ? 'fa-sun' : 'fa-moon';
+                themeToggle.innerHTML = `<i class="fas ${icon}"></i>`;
+                themeToggle.setAttribute('aria-label', theme === 'dark-theme' ? 'Switch to Light Mode' : 'Switch to Dark Mode');
+            };
+
+            const toggleTheme = () => {
+                const newTheme = body.classList.contains('dark-theme') ? 'light-theme' : 'dark-theme';
+                applyTheme(newTheme);
+                localStorage.setItem(localStorageKey, newTheme);
+            };
+
+            // Load saved theme or default to dark
+            const savedTheme = localStorage.getItem(localStorageKey) || 'dark-theme';
+            applyTheme(savedTheme);
+            themeToggle.addEventListener('click', toggleTheme);
+
+            // --- Header & Scroll Logic ---
+            $('#hamburger').addEventListener('click', () => {
+                $('#nav-links').classList.toggle('active');
+            });
+            
+            // Smooth scroll for CTA
+            $('.hero-cta').addEventListener('click', (e) => {
+                e.preventDefault();
+                document.getElementById('tools').scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            // Copy to Clipboard Utility
+            window.copyToClipboard = (elementId) => {
+                const element = document.getElementById(elementId);
+                let textToCopy = '';
+
+                if (element.tagName === 'TEXTAREA' || element.tagName === 'INPUT') {
+                    textToCopy = element.value;
+                } else {
+                    textToCopy = element.textContent;
+                }
+                
+                if (!textToCopy) {
+                    // Using console log instead of alert to adhere to modern web app standards
+                    console.error('Nothing to copy!'); 
+                    return;
+                }
+
+                // Temporary textarea trick for reliable copying
+                const tempTextArea = document.createElement('textarea');
+                tempTextArea.value = textToCopy;
+                document.body.appendChild(tempTextArea);
+                tempTextArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempTextArea);
+
+                console.log('Copied to clipboard!');
+            };
+
+
+            // ----------------------------------------------------------------
+            // --- 🔧 TOOL FUNCTIONALITY IMPLEMENTATIONS ---
+            // ----------------------------------------------------------------
+
+            // 1. Meta Tag Generator
+            window.generateMetaTags = () => {
+                const title = $('#meta-title').value;
+                const desc = $('#meta-desc').value;
+                const keywords = $('#meta-keywords').value;
+
+                let output = `<title>${title}</title>\n`;
+                output += `<meta name="description" content="${desc}" />\n`;
+                if (keywords) {
+                    output += `<meta name="keywords" content="${keywords}" />`;
+                }
+                
+                $('#meta-output').value = output.trim();
+            };
+
+            // 2. Keyword Density Checker
+            window.checkKeywordDensity = () => {
+                const text = $('#density-text').value.toLowerCase().trim();
+                const targetKeyword = $('#target-keyword').value.toLowerCase().trim();
+                const outputDiv = $('#density-output');
+
+                if (!text) {
+                    outputDiv.innerHTML = 'Type or paste content to begin analysis.';
+                    return;
+                }
+
+                const words = text.match(/\b\w+\b/g) || [];
+                const totalWords = words.length;
+                const wordMap = {};
+
+                words.forEach(word => {
+                    wordMap[word] = (wordMap[word] || 0) + 1;
+                });
+
+                let resultHtml = `Total Words: <span class="result-text">${totalWords}</span><br>`;
+                
+                if (targetKeyword) {
+                    const targetCount = wordMap[targetKeyword] || 0;
+                    const density = totalWords > 0 ? ((targetCount / totalWords) * 100).toFixed(2) : 0;
+                    resultHtml += `Target Keyword: <strong>"${targetKeyword}"</strong><br>`;
+                    resultHtml += `Count: <span class="result-text">${targetCount}</span>, Density: <span class="result-text">${density}%</span><br>`;
+                }
+
+                const sortedWords = Object.entries(wordMap)
+                    .sort(([, countA], [, countB]) => countB - countA)
+                    .slice(0, 5); // Top 5
+
+                resultHtml += '<br>Top 5 Keywords:<br>';
+                sortedWords.forEach(([word, count]) => {
+                    const density = totalWords > 0 ? ((count / totalWords) * 100).toFixed(2) : 0;
+                    resultHtml += `<span class="result-text">${word}</span>: ${count} (${density}%)<br>`;
+                });
+
+                outputDiv.innerHTML = resultHtml;
+            };
+
+            // 3. Robots.txt Generator
+            window.generateRobotsTxt = () => {
+                const userAgent = $('#user-agent').value;
+                const allowAll = $('#allow-all').checked;
+                const disallowPath = $('#disallow-path').value.split(',').map(s => s.trim()).filter(Boolean);
+                const includeSitemap = $('#sitemap-include').checked;
+                const baseUrl = $('#base-url').value || "https://www.promptminds.com"; // Use sitemap base URL if available
+
+                let output = `User-agent: ${userAgent}\n`;
+                
+                if (allowAll) {
+                    output += `Allow: /\n`;
+                } else {
+                    output += `Disallow: /\n`; // Disallow all if "Allow All" is unchecked
+                }
+                
+                disallowPath.forEach(path => {
+                    output += `Disallow: ${path}\n`;
+                });
+
+                if (includeSitemap) {
+                    output += `\nSitemap: ${baseUrl.replace(/\/$/, "")}/sitemap.xml`;
+                }
+                
+                $('#robots-output').value = output.trim();
+            };
+            // Initial generation
+            generateRobotsTxt();
+
+            // 4. Sitemap Generator (Simulated)
+            window.generateSitemap = () => {
+                const baseUrl = $('#base-url').value.replace(/\/$/, ""); // Remove trailing slash
+                const pageCount = parseInt($('#page-count').value) || 1;
+                
+                let output = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>${baseUrl}/</loc>
+        <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>\n`;
+
+                for (let i = 1; i <= Math.min(pageCount, 5); i++) { // Limit sample to 5 for brevity
+                    output += `    <url>
+        <loc>${baseUrl}/page-${i}</loc>
+        <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+        <changefreq>weekly</changefreq>
+                    <priority>0.8</priority>
+    </url>\n`;
+                }
+                
+                if (pageCount > 5) {
+                    output += `    <!-- ... ${pageCount - 5} more URLs simulated ... -->\n`;
+                }
+
+                output += `</urlset>`;
+                $('#sitemap-output').value = output.trim();
+            };
+            generateSitemap();
+
+            // 5. Title & Description Analyzer
+            window.analyzeTitleDesc = () => {
+                const title = $('#analyze-title').value;
+                const desc = $('#analyze-desc').value;
+                const outputDiv = $('#analyze-output');
+
+                // Retrieve the accent color from the theme
+                const accentColor = getCssVar('--color-accent');
+
+                const analyzeField = (text, min, max, label) => {
+                    const len = text.length;
+                    let status;
+                    let color;
+
+                    if (len === 0) {
+                        status = 'Empty';
+                        color = 'red';
+                    } else if (len < min) {
+                        status = 'Too Short';
+                        color = 'orange';
+                    } else if (len > max) {
+                        status = 'Too Long';
+                        color = 'red';
+                    } else {
+                        status = 'Optimal';
+                        color = accentColor; // Use dynamic accent color
+                    }
+                    return `${label}: <span style="color: ${color};">${len}/${max} chars (${status})</span>`;
+                };
+
+                const titleResult = analyzeField(title, 50, 60, 'Title');
+                const descResult = analyzeField(desc, 150, 160, 'Description');
+
+                outputDiv.innerHTML = `${titleResult}<br>${descResult}`;
+            };
+            analyzeTitleDesc();
+            
+            // 6. URL Encoder/Decoder
+            window.encodeDecodeUrl = () => {
+                const input = $('#url-input').value;
+                let encoded = '';
+                let decoded = '';
+
+                try {
+                    encoded = encodeURIComponent(input);
+                    decoded = decodeURIComponent(encoded);
+                } catch (e) {
+                    encoded = 'Error in encoding.';
+                    decoded = 'Error in decoding.';
+                }
+
+                $('#url-encoded-output').value = encoded;
+                $('#url-decoded-output').value = decoded;
+            };
+            
+            // 7. Canonical Tag Generator
+            window.generateCanonicalTag = () => {
+                const url = $('#canonical-url').value.trim();
+                let output = '';
+
+                if (url.startsWith('http')) {
+                    output = `<link rel="canonical" href="${url}" />`;
+                } else if (url) {
+                    output = 'Error: URL must start with http:// or https://';
+                }
+
+                $('#canonical-output').value = output;
+            };
+
+            // 8. Slug Generator
+            window.generateSlug = () => {
+                const input = $('#slug-input').value;
+                let slug = input.toLowerCase()
+                                .replace(/[^\w\s-]/g, '') // Remove non-word chars except spaces and hyphens
+                                .trim()
+                                .replace(/\s+/g, '-'); // Replace spaces with hyphens
+                
+                $('#slug-output').textContent = slug;
+            };
+
+            // 9. Redirect URL Generator
+            window.generateRedirect = () => {
+                const oldUrl = $('#old-url').value.trim();
+                const newUrl = $('#new-url').value.trim();
+                let output = '';
+
+                if (oldUrl && newUrl) {
+                    output = `# 301 Permanent Redirect\nRedirect 301 ${oldUrl} ${newUrl}`;
+                } else if (oldUrl || newUrl) {
+                    output = 'Enter both Old and New URLs.';
+                }
+
+                $('#redirect-output').value = output;
+            };
+
+            // 10. Alt Text Generator (Template)
+            window.generateAltText = () => {
+                const input = $('#alt-text-input').value.trim();
+                let output = '';
+
+                if (input) {
+                    // Simple logic: remove extension and format
+                    const baseName = input.replace(/\.(jpg|png|gif|jpeg|webp)$/i, '').replace(/[-\s_]/g, ' ');
+                    
+                    // Template generation
+                    const templates = [
+                        `A descriptive image of ${baseName}`,
+                        `Illustration showing ${baseName} and its purpose`,
+                        `An image of ${baseName} used for content optimization`
+                    ];
+                    
+                    output = templates[Math.floor(Math.random() * templates.length)];
+                } else {
+                    output = 'Enter an image filename or topic.';
+                }
+
+                $('#alt-output').textContent = output;
+            };
+
+            // 11. Blog Title Generator (Simple Idea)
+            window.generateBlogTitle = () => {
+                const keyword = $('#title-keyword').value.trim();
+                const outputDiv = $('#blog-title-output');
+                
+                if (!keyword) {
+                    outputDiv.textContent = 'Enter a keyword to generate ideas.';
+                    return;
+                }
+
+                const titles = [
+                    `The Ultimate Guide to ${keyword}`,
+                    `5 Ways ${keyword} Will Change Your Life`,
+                    `Why ${keyword} is the Key to Content Optimization`,
+                    `Unlocking the Power of ${keyword}: A Marketer's Guide`
+                ];
+                
+                outputDiv.textContent = titles[Math.floor(Math.random() * titles.length)];
+            };
+
+            // 12. Blog Topic Idea Generator
+            window.generateBlogTopic = () => {
+                const seed = $('#topic-seed').value.trim();
+                const outputDiv = $('#blog-topic-output');
+                
+                if (!seed) {
+                    outputDiv.textContent = 'Enter a seed topic to generate ideas.';
+                    return;
+                }
+
+                const topics = [
+                    `1. Advanced strategies for ${seed} in 2025.`,
+                    `2. The beginner's guide to mastering ${seed}.`,
+                    `3. Case study: How ${seed} boosts conversion rates.`,
+                    `4. Common mistakes to avoid when executing ${seed}.`
+                ];
+                
+                outputDiv.innerHTML = topics.slice(0, 3).join('<br>');
+            };
+
+            // 13. Read Time Estimator
+            window.estimateReadTime = () => {
+                const text = $('#read-time-text').value.trim();
+                const words = text.match(/\b\w+\b/g) || [];
+                const wordCount = words.length;
+                
+                // Assuming 200 Words Per Minute (WPM)
+                const minutes = Math.ceil(wordCount / 200);
+                
+                $('#read-time-output').textContent = `${minutes} ${minutes === 1 ? 'minute' : 'minutes'}`;
+            };
+
+            // 14. Word & Character Counter
+            window.countWordsChars = () => {
+                const text = $('#word-char-text').value;
+                const words = (text.match(/\b\w+\b/g) || []).length;
+                const charsWithSpaces = text.length;
+                const charsNoSpaces = text.replace(/\s/g, '').length;
+                
+                const outputDiv = $('#word-char-output');
+                outputDiv.innerHTML = `
+                    <div>Words: <span>${words}</span></div>
+                    <div>Characters (including spaces): <span>${charsWithSpaces}</span></div>
+                    <div>Characters (no spaces): <span>${charsNoSpaces}</span></div>
+                `;
+            };
+
+            // 15. HTML Tag Cleaner
+            window.cleanHtmlTags = () => {
+                const html = $('#html-input').value;
+                // Regex to remove all HTML tags (incl. self-closing ones)
+                const plainText = html.replace(/<\/?[^>]+(>|$)/g, "");
+                $('#html-output').value = plainText;
+            };
+
+            // 16. Markdown to HTML Viewer (Simplified)
+            window.renderMarkdown = () => {
+                let md = $('#md-input').value;
+                
+                // Convert simple Markdown to basic HTML
+                md = md.replace(/^# (.*$)/gim, '<h1>$1</h1>'); // Headings
+                md = md.replace(/\*\*(.*?)\*\*/gim, '<b>$1</b>'); // Bold
+                md = md.replace(/\*(.*?)\*/gim, '<i>$1</i>'); // Italic (less aggressive)
+                md = md.replace(/\n/g, '<br>'); // Newlines
+
+                $('#md-output-preview').innerHTML = md;
+            };
+
+            // 17. Text Formatter
+            window.formatText = (type) => {
+                const input = $('#format-input').value;
+                let output = '';
+
+                switch (type) {
+                    case 'upper':
+                        output = input.toUpperCase();
+                        break;
+                    case 'lower':
+                        output = input.toLowerCase();
+                        break;
+                    case 'title':
+                        output = input.toLowerCase().split(' ').map(word => {
+                            return word.charAt(0).toUpperCase() + word.slice(1);
+                        }).join(' ');
+                        break;
+                }
+                $('#format-output').value = output;
+            };
+
+            // 18. Lorem Ipsum Generator
+            const LOREM_TEXT = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+            
+            window.generateLoremIpsum = () => {
+                const count = parseInt($('#lorem-count').value) || 1;
+                let output = '';
+                for (let i = 0; i < count; i++) {
+                    output += LOREM_TEXT + (i < count - 1 ? '\n\n' : '');
+                }
+                $('#lorem-output').value = output;
+            };
+
+            // 19. JSON Formatter
+            window.formatJson = () => {
+                const input = $('#json-input').value;
+                const output = $('#json-output');
+                
+                try {
+                    const obj = JSON.parse(input);
+                    output.value = JSON.stringify(obj, null, 2);
+                    // Use CSS variable for text color
+                    output.style.color = getCssVar('--text-primary'); 
+                } catch (e) {
+                    output.value = `JSON Parsing Error: ${e.message}`;
+                    output.style.color = 'red';
+                }
+            };
+            
+            // 20. Color Picker
+            window.updateColorOutput = (hex) => {
+                const outputDiv = $('#color-output');
+                const swatch = $('#color-swatch');
+
+                swatch.style.backgroundColor = hex;
+                // Use CSS variable for input border for a consistent look
+                swatch.style.border = getCssVar('--input-border'); 
+                outputDiv.innerHTML = `HEX: <span class="result-text">${hex}</span>`;
+            };
+            
+            // 21. Text to Speech (TTS)
+            const synth = window.speechSynthesis;
+            let currentUtterance = null;
+            
+            window.readText = () => {
+                if (synth.speaking) {
+                    synth.cancel();
+                }
+                const text = $('#tts-text').value;
+                if (!text) return;
+
+                currentUtterance = new SpeechSynthesisUtterance(text);
+                // Optionally set properties (rate, pitch, voice) here
+                synth.speak(currentUtterance);
+            };
+
+            window.stopReading = () => {
+                if (synth.speaking) {
+                    synth.cancel();
+                }
+            };
+            
+            // 22. Age Calculator
+            window.calculateAge = () => {
+                const birthDateStr = $('#birth-date').value;
+                const outputDiv = $('#age-output');
+
+                if (!birthDateStr) {
+                    outputDiv.textContent = 'Please select a birth date.';
+                    return;
+                }
+
+                const birthDate = new Date(birthDateStr);
+                const today = new Date();
+                
+                let ageYears = today.getFullYear() - birthDate.getFullYear();
+                let ageMonths = today.getMonth() - birthDate.getMonth();
+                let ageDays = today.getDate() - birthDate.getDate();
+
+                if (ageDays < 0) {
+                    ageMonths--;
+                    ageDays += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
+                }
+
+                if (ageMonths < 0) {
+                    ageYears--;
+                    ageMonths += 12;
+                }
+
+                outputDiv.innerHTML = `
+                    <span class="result-text">${ageYears}</span> years, 
+                    <span class="result-text">${ageMonths}</span> months, and 
+                    <span class="result-text">${ageDays}</span> days.
+                `;
+            };
+
+            // 23. Timer / Stopwatch
+            let intervalId = null;
+            let startTime = 0;
+            let elapsedTime = 0;
+            let isRunning = false;
+            
+            const display = $('#stopwatch-display');
+            const startBtn = $('#stopwatch-start');
+            const pauseBtn = $('#stopwatch-pause');
+            const resetBtn = $('#stopwatch-reset');
+
+            const formatTime = (ms) => {
+                const totalSeconds = Math.floor(ms / 1000);
+                const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+                const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+                const seconds = String(totalSeconds % 60).padStart(2, '0');
+                return `${hours}:${minutes}:${seconds}`;
+            };
+
+            const updateStopwatch = () => {
+                elapsedTime = Date.now() - startTime;
+                display.textContent = formatTime(elapsedTime);
+            };
+
+            startBtn.addEventListener('click', () => {
+                if (!isRunning) {
+                    isRunning = true;
+                    startBtn.textContent = 'Continue';
+                    startBtn.disabled = true;
+                    pauseBtn.disabled = false;
+                    startTime = Date.now() - elapsedTime;
+                    intervalId = setInterval(updateStopwatch, 1000);
+                }
+            });
+
+            pauseBtn.addEventListener('click', () => {
+                if (isRunning) {
+                    isRunning = false;
+                    startBtn.disabled = false;
+                    pauseBtn.disabled = true;
+                    clearInterval(intervalId);
+                }
+            });
+
+            resetBtn.addEventListener('click', () => {
+                isRunning = false;
+                clearInterval(intervalId);
+                elapsedTime = 0;
+                display.textContent = formatTime(0);
+                startBtn.textContent = 'Start';
+                startBtn.disabled = false;
+                pauseBtn.disabled = true;
+            });
+            
+            // --- Initial calls for tool outputs on load ---
+            generateMetaTags();
+            countWordsChars();
+            checkKeywordDensity();
+            analyzeTitleDesc();
+            updateColorOutput($('#color-input').value);
+        });
+    </script>
+</body>
+</html>
